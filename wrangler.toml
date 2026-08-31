@@ -1,0 +1,10 @@
+name = "homework-assistant"
+main = "worker/index.js"
+compatibility_date = "2026-08-31"
+
+[assets]
+directory = "./public"
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
