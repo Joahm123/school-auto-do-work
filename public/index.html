@@ -1,1 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Assistant</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="background">
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+    </div>
 
+    <nav class="navbar">
+        <div class="brand">
+            <div class="brand-icon">H</div>
+            <span>Homework Assistant</span>
+        </div>
+
+        <div class="nav-links">
+            <button class="nav-button active" data-page="dashboard">Dashboard</button>
+            <button class="nav-button" data-page="assignments">Assignments</button>
+            <button class="nav-button" data-page="helper">Helper</button>
+            <button class="nav-button" data-page="settings">Settings</button>
+        </div>
+
+        <div class="account">
+            <div id="accountName">Not connected</div>
+            <button id="loginButton" class="login-button">Sign in with Google</button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="dashboardPage" class="page active-page">
+            <div class="hero">
+                <div>
+                    <p class="eyebrow">WELCOME BACK</p>
+                    <h1>Your schoolwork, <span>organized.</span></h1>
+                    <p class="hero-text">
+                        Connect your Google Classroom account and keep your assignments,
+                        documents, and study help in one place.
+                    </p>
+                </div>
+
+                <button class="primary-button" data-page-target="assignments">
+                    View assignments
+                </button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-label">Assignments</div>
+                    <div id="assignmentCount" class="stat-number">—</div>
+                    <div class="stat-subtitle">From Classroom</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Due Soon</div>
+                    <div id="dueCount" class="stat-number">—</div>
+                    <div class="stat-subtitle">Next 7 days</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Courses</div>
+                    <div id="courseCount" class="stat-number">—</div>
+                    <div class="stat-subtitle">Active classes</div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <div>
+                    <p class="eyebrow">CLASSROOM</p>
+                    <h2>Recent assignments</h2>
+                </div>
+
+                <button class="text-button" data-page-target="assignments">
+                    See all →
+                </button>
+            </div>
+
+            <div id="recentAssignments" class="assignment-grid">
+                <div class="empty-card">
+                    <div class="empty-icon">G</div>
+                    <h3>Connect Google Classroom</h3>
+                    <p>
+                        Sign in with your Google account to load your real Classroom
+                        assignments.
+                    </p>
+                    <button class="primary-button" id="connectButton">
+                        Connect Google
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="assignmentsPage" class="page">
+            <div class="page-header">
+                <div>
+                    <p class="eyebrow">GOOGLE CLASSROOM</p>
+                    <h1>Assignments</h1>
+                    <p>Assignments available through your connected account.</p>
+                </div>
+
+                <button id="refreshAssignments" class="secondary-button">
+                    Refresh
+                </button>
+            </div>
+
+            <div id="assignmentList" class="assignment-list">
+                <div class="empty-card">
+                    <h3>No assignments loaded</h3>
+                    <p>Connect your Google account to retrieve Classroom data.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="helperPage" class="page">
+            <div class="page-header">
+                <div>
+                    <p class="eyebrow">STUDY TOOL</p>
+                    <h1>Homework Helper</h1>
+                    <p>Get explanations and guidance for questions you're working on.</p>
+                </div>
+            </div>
+
+            <div class="helper-layout">
+                <div class="helper-card">
+                    <label for="questionInput">Question</label>
+                    <textarea
+                        id="questionInput"
+                        placeholder="Paste or type the question you're working on..."
+                    ></textarea>
+
+                    <div class="helper-options">
+                        <select id="subjectSelect">
+                            <option value="general">General</option>
+                            <option value="math">Math</option>
+                            <option value="science">Science</option>
+                            <option value="english">English</option>
+                            <option value="history">History</option>
+                        </select>
+
+                        <button id="explainButton" class="primary-button">
+                            Explain
+                        </button>
+                    </div>
+                </div>
+
+                <div class="answer-card">
+                    <div class="answer-header">
+                        <span>Explanation</span>
+                        <span id="helperStatus">Ready</span>
+                    </div>
+
+                    <div id="helperOutput" class="helper-output">
+                        <div class="output-placeholder">
+                            <div class="output-icon">?</div>
+                            <p>Your explanation will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="settingsPage" class="page">
+            <div class="page-header">
+                <div>
+                    <p class="eyebrow">CONFIGURATION</p>
+                    <h1>Settings</h1>
+                    <p>Manage your Homework Assistant connection.</p>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <div class="setting">
+                    <div>
+                        <h3>Google Classroom</h3>
+                        <p id="googleStatus">Not connected</p>
+                    </div>
+
+                    <button id="settingsLogin" class="secondary-button">
+                        Connect
+                    </button>
+                </div>
+
+                <div class="setting">
+                    <div>
+                        <h3>Privacy</h3>
+                        <p>
+                            Google credentials and API secrets stay on the server.
+                            They are never placed in frontend JavaScript.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="setting">
+                    <div>
+                        <h3>Submission protection</h3>
+                        <p>
+                            This application does not automatically submit Classroom
+                            assignments.
+                        </p>
+                    </div>
+
+                    <div class="status-badge">Protected</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
